@@ -1,0 +1,16 @@
+[
+{
+  "modid": "frst",
+  "name": "Aaron's Mod",
+  "description": "Adds Numerious Items and Blocks for decoration and survival gameplay",
+  "version": "1.1",
+  "mcversion": "1.7.10",
+  "url": "none",
+  "updateUrl": "",
+  "authorList": ["Aaron"],
+  "credits": "Thank you MrCrayfish for the modding tutorials, as well as WeHaveCookies for the Gui tutorial!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
