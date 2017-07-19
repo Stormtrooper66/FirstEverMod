@@ -1,5 +1,6 @@
-package strormtrooper.newmods;
+package strormtrooper.newmods.Entity;
 
+import strormtrooper.newmods.Newmod_firstever;
 import strormtrooper.newmods.Entity.EntityRobotChicken;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;

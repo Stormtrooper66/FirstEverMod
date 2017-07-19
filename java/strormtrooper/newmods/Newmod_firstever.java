@@ -13,6 +13,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import strormtrooper.newmods.Entity.EntityRobotChicken;
+import strormtrooper.newmods.Entity.ModEntities;
 import strormtrooper.newmods.item.ItemEmeraldArmor;
 import strormtrooper.newmods.item.ItemEmeraldAxe;
 import strormtrooper.newmods.item.ItemEmeraldHoe;
