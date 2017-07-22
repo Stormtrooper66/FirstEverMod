@@ -35,7 +35,7 @@ public class EntityRobotChicken extends EntityAnimal{
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(4.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(.2D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(.3D);
 	}
 	protected void dropFewItems(boolean t_f, int i) {
 		super.dropFewItems(t_f, i);
@@ -60,4 +60,16 @@ public class EntityRobotChicken extends EntityAnimal{
 		
 		return null;
 	}
+	 protected String getLivingSound()
+	    {
+	        return "mob.chicken.say";
+	    }
+	 protected String getHurtSound()
+	    {
+	        return "mob.chicken.hurt";
+	    }
+	 protected String getDeathSound()
+	    {
+	        return "mob.chicken.hurt";
+	    }
 }
