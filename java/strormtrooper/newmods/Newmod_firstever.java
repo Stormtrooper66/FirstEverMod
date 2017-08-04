@@ -12,8 +12,13 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
-import strormtrooper.newmods.Entity.EntityRobotChicken;
-import strormtrooper.newmods.Entity.ModEntities;
+import strormtrooper.newmods.Entity.EntityMobRegistry;
+import strormtrooper.newmods.commands.CommandDay;
+import strormtrooper.newmods.commands.CommandHeal;
+import strormtrooper.newmods.commands.CommandIgive;
+import strormtrooper.newmods.commands.CommandNight;
+import strormtrooper.newmods.commands.CommandPlatform;
+import strormtrooper.newmods.commands.CommandWeatherClear;
 import strormtrooper.newmods.item.ItemEmeraldArmor;
 import strormtrooper.newmods.item.ItemEmeraldAxe;
 import strormtrooper.newmods.item.ItemEmeraldHoe;
@@ -25,13 +30,23 @@ import strormtrooper.newmods.item.ItemEnderiumSword;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = "frst", name = "Firstever" , version = "1.1")
 public class Newmod_firstever {
+	
+	@SidedProxy(clientSide = "strormtrooper.newmods.ClientProxy", serverSide = "strormtrooper.newmods.ServerProxy")
+	public static ClientProxy proxy;
+	
+	@Instance("frst")
+	public static Newmod_firstever modInstance;
 	
 	public static Item itemTable;
 	public static Block blockTable;
@@ -73,11 +88,25 @@ public class Newmod_firstever {
 	public static final ItemArmor.ArmorMaterial EmeraldArmorMaterial = EnumHelper.addArmorMaterial("EmeraldArmorMaterial", 502, new int[]{2,7,5,3}, 50);
 	public static final Item.ToolMaterial EnderiumToolMaterial = EnumHelper.addToolMaterial("EnderiumToolMaterial", (int) 3.0, 2343,12.0F, 4.0F, 35);
 	public static final ItemArmor.ArmorMaterial EnderiumArmorMaterial = EnumHelper.addArmorMaterial("EnderiumArmorMaterial", 2343, new int[]{4,14,10,6}, 35);
-	
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event)
+	{
+	    // register server commands
+
+	event.registerServerCommand(new CommandHeal());
+	event.registerServerCommand(new CommandIgive());
+	event.registerServerCommand(new CommandDay());
+	event.registerServerCommand(new CommandNight());
+	event.registerServerCommand(new CommandWeatherClear());
+	event.registerServerCommand(new CommandPlatform());
+	}
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		proxy.preInit(event);
 		//Item/Block init and registering
 		//Config handling
+		//Debug
+		System.out.println("Creating Items");
 		itemTable = new ItemTable().setUnlocalizedName("ItemTable").setTextureName("frst:itemtable").setCreativeTab(tabFirstEver);
 		blockTable = new BlockTable(Material.wood).setBlockName("BlockTable").setBlockTextureName("frst:blockTable").setCreativeTab(tabFirstEver);
 		TableLeg = new TableLeg().setUnlocalizedName("TableLeg").setTextureName("frst:TableLeg").setCreativeTab(tabFirstEver);
@@ -116,7 +145,8 @@ public class Newmod_firstever {
 		EmeraldLeggings = new ItemEmeraldArmor(EmeraldArmorMaterial, 0, 2).setUnlocalizedName("EmeraldLeggings").setTextureName("frst:EmeraldLeggings").setCreativeTab(tabFirstEver);
 		EmeraldBoots = new ItemEmeraldArmor(EmeraldArmorMaterial, 0, 3).setUnlocalizedName("EmeraldBoots").setTextureName("frst:EmeraldBoots").setCreativeTab(tabFirstEver);
 		
-		
+		//Debug
+		System.out.println("Registering Items");
 		GameRegistry.registerItem(itemTable,itemTable.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(blockTable,blockTable.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(TableLeg, TableLeg.getUnlocalizedName().substring(5));
@@ -150,7 +180,6 @@ public class Newmod_firstever {
 		GameRegistry.registerItem(EmeraldLeggings, EmeraldLeggings.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(EmeraldBoots, EmeraldBoots.getUnlocalizedName().substring(5));
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityRobotChicken.class, new RenderChicken(new ModelChicken(), 0));
 		
 		
 		
@@ -159,16 +188,21 @@ public class Newmod_firstever {
 		
 		
 		
+		EntityMobRegistry.mainRegistry();
 		
 		
-		
+		//Debug
+		System.out.println("Registering New Smelting Recipes");
 		GameRegistry.addSmelting(Sausageraw, new ItemStack(HotDog), 5.0F);
-		ModEntities.init();
+		
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 	//Proxy, Tileentity, entity, GUI, and Packet Registering
+		//Debug
+		proxy.Init(event);
+		System.out.println("Registering Recipes");
 		GameRegistry.addRecipe(new ItemStack(guitest), new Object[]{"W", 'W', Blocks.planks});
 		GameRegistry.addRecipe(new ItemStack(itemTable), new Object[]{"WWW","W W","W W", 'W', Blocks.planks});
 		GameRegistry.addRecipe(new ItemStack(blockTable),new Object[]{"WWW","LIL","L L",'W', Blocks.planks,'I' ,Items.iron_ingot, 'L', TableLeg});
@@ -198,6 +232,7 @@ public class Newmod_firstever {
 		
 		GameRegistry.addRecipe(new ItemStack(Enderiumingot,2),new Object[]{" O ","OEO"," O ",'O',Blocks.obsidian,'E',Items.ender_pearl});
 		GameRegistry.addRecipe(new ItemStack(Steelrod), new Object[]{"I","I",'I',Items.iron_ingot});
+		GameRegistry.addRecipe(new ItemStack(Items.iron_ingot, 2),new Object[]{"S",'S',Newmod_firstever.Steelrod});
 		GameRegistry.addRecipe(new ItemStack(EnderiumSword),new Object[]{"E","E","S",'E',Enderiumingot, 'S',Steelrod});
 		GameRegistry.addRecipe(new ItemStack(EnderiumHelmet), new Object[]{"EEE","E E",'E',Enderiumingot});
 		GameRegistry.addRecipe(new ItemStack(EnderiumChestplate), new Object[]{"E E","EEE","EEE",'E',Enderiumingot});
@@ -220,7 +255,7 @@ public class Newmod_firstever {
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		proxy.postInit(event);
 	}
 	
 	public static CreativeTabs tabFirstEver = new CreativeTabs("tabFirstEver"){;
@@ -230,3 +265,4 @@ public class Newmod_firstever {
 		}
 	};
 }
+
