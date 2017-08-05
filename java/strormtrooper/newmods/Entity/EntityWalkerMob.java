@@ -41,7 +41,7 @@ public class EntityWalkerMob extends EntityMob{
 	}
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(7.5D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.5D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(20.0D);
