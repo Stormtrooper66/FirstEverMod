@@ -27,14 +27,14 @@ public class WalkerModel extends ModelBase
 	public WalkerModel(){
 		
 		Head = new ModelRenderer(this,0,0);
-		Head.addBox(0F, 0F, 0F, 10, -8, 9);
-		Head.setRotationPoint(-5F, (24F - 16F), -4F);
+		Head.addBox(0F, 0F, 0F, 10, 8, 9);
+		Head.setRotationPoint(-5F, (24F - 24F), -4F);
 		Head.setTextureSize(TextureWidth, TextureHeight);
 		//Eyes
 		Eyes = new ModelRenderer(this,32,28);
-		Eyes.addBox(-1F, 0F,0F, 2, -2, 1);
-		Eyes.addBox(3F,0F,0F, 2, -2, 1);
-		Eyes.setRotationPoint(-2F, (24F - 20F), -5F);
+		Eyes.addBox(-1F, 0F,0F, 2, 2, 1);
+		Eyes.addBox(3F,0F,0F, 2, 2, 1);
+		Eyes.setRotationPoint(-2F, (24F - 22F), -5F);
 		Eyes.setTextureSize(TextureWidth, TextureHeight);
 		//Leg1(Right)
 		Leg1 = new ModelRenderer(this,40,0);
@@ -42,7 +42,7 @@ public class WalkerModel extends ModelBase
 		Leg1.setRotationPoint(1F, (24F - 16F), -1F);
 		Leg1.setTextureSize(TextureWidth, TextureHeight);
 		//Leg2(Left)
-		Leg2 = new ModelRenderer(this,50,0);
+		Leg2 = new ModelRenderer(this,52,0);
 		Leg2.addBox(0F, 0F, 0F, 3, 16, 3);
 		Leg2.setRotationPoint(-4F, (24F - 16F), -1F);
 		Leg2.setTextureSize(TextureWidth, TextureHeight);
