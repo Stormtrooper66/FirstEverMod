@@ -42,3 +42,7 @@ item.EmeraldLeggings.name=Emerald Leggings
 item.EmeraldBoots.name=Emerald Boots
 
 itemGroup.tabFirstEver=First Mod Ever
+
+
+entity.Robot_Chicken.name=Robot Chicken
+entity.Walker.name=Walker
