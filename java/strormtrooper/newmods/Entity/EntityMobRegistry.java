@@ -36,6 +36,7 @@ public class EntityMobRegistry{
 		
 		createEntity(EntityRobotChickenMob.class,"Robot_Chicken",0xFFFFFF,0x6B6B6B);
 		createEntity(EntityWalkerMob.class, "Walker", 0xFFFFFF, 0xFFFF00);
+		createEntity(ENtitySpeederMob.class,"Speeder",0x666666,0xFF0F0F);
 		
 	}
 	public static void createEntity(Class entityClass, String entityName, int solidcolor, int spotcolor){
