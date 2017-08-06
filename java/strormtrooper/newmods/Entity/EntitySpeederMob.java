@@ -22,7 +22,7 @@ public class EntitySpeederMob extends EntityMob{
 
 	public EntitySpeederMob(World par1world) {
 		super(par1world);
-		this.setSize(0.6F, 1.4F);
+		this.setSize(2.0F, 1.4F);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
 		this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
@@ -41,11 +41,11 @@ public class EntitySpeederMob extends EntityMob{
 	}
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.5D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.2D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.0D);
 	}
 	 
 }
