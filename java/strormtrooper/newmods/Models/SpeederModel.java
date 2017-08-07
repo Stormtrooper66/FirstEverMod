@@ -11,5 +11,18 @@ import net.minecraft.util.MathHelper;
 
 public class SpeederModel extends ModelBase
 {
-public int TextureWidth = 64;
-public int TextureHeight = 32;
+        public ModelRenderer Head;
+        
+        
+        
+        public int TextureWidth = 64;
+        public int TextureHeight = 32;
+        
+        
+        
+        protected double distanceMovedTotal = 0.0D;
+        
+        public SpeederModel(){
+         
+         
+         }
