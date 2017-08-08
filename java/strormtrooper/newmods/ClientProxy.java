@@ -56,5 +56,7 @@ public class ClientProxy extends ServerProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityRobotChickenMob.class,new RenderRobotChickenMob(new RobotChickenModel(), 0.0F));
 		System.out.println("Rendering Walker");
 		RenderingRegistry.registerEntityRenderingHandler(EntityWalkerMob.class, new RenderWalkerMob(new WalkerModel(),0.0F));
+		System.out.println("Rendering Speeder");
+		RenderingRegistry.registerEntityRenderingHandler(EntitySpeederMob.class, new RenderSpeederMob(new SpeederModel(),0.0F));
 	}
 }
