@@ -17,8 +17,8 @@ public class WalkerModel extends ModelBase
 	public ModelRenderer Leg2;
 	
 
-	public int TextureWidth = 64;
-	public int TextureHeight = 32;
+	public int TextureWidth = 256;
+	public int TextureHeight = 128;
 	
 	
 	protected double distanceMovedTotal = 0.0D;
