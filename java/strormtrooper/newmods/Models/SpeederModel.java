@@ -15,8 +15,8 @@ public class SpeederModel extends ModelBase
         
         
         
-        public int TextureWidth = 64;
-        public int TextureHeight = 32;
+        public int TextureWidth = 248;
+        public int TextureHeight = 124;
         
         
         
@@ -25,7 +25,7 @@ public class SpeederModel extends ModelBase
         public SpeederModel(){
                Body = new ModelRenderer(this,0,0);
                Body.addbox(0F,0F,0F,5,5,32);
-               Body.setRotationPoint(-5F,(24F- 24F),-4F);
+               Body.setRotationPoint(-4F,(24F- 18F),-4F);
                Body.setTextureSize(TextureWidth,TextureHeight);
 	       
          
